@@ -93,7 +93,7 @@ Start with these files:
 
 Use `Button` with `variant="primary"` for the main action and `variant="secondary"` for supporting actions. Reuse `Input` and `Select` when the demo needs form controls.
 
-Keep the initial screen limited to the title and two actions, with feedback shown after an action. Import accepts `.csv` files only, without validating or processing their contents. Export stays disabled until a CSV is selected, then downloads its original bytes unchanged. The page stores the original `File` in `csv`; refreshing clears this browser state. See [CSV data](../README.md#csv-data) for the implementation. Connect SQLite only if the chosen demo needs persistence.
+Keep the initial screen limited to the title and two actions, with feedback shown after an action. Import accepts `.csv` files only, without validating or processing their contents. Export stays disabled until a CSV is selected, then downloads its original bytes unchanged. The page stores the original `File` in `csv`; refreshing clears this browser state. See the [starter page](../src/app/page.tsx) for the implementation. Connect SQLite only if the chosen demo needs persistence.
 
 ## Patterns to follow
 
