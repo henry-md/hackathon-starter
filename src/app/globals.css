@@ -25,9 +25,12 @@
   --foreground: var(--cdr-navy);
   --surface: var(--cdr-gray-100);
   --surface-hover: var(--cdr-gray-200);
-  --primary: var(--cdr-navy);
-  --primary-hover: var(--cdr-gray-900);
+  /* Application accents for the Excel workflow. */
+  --primary: #0057c2;
+  --primary-hover: #00459b;
   --primary-foreground: var(--cdr-white);
+  --accent: #edf5ff;
+  --accent-foreground: var(--primary);
   --muted: var(--cdr-gray-700);
   --border: var(--cdr-gray-300);
   --input: var(--cdr-gray-600);
@@ -42,6 +45,8 @@
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
   --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-input: var(--input);
@@ -80,7 +85,7 @@
   }
 
   ::selection {
-    background: var(--cdr-sage);
+    background: var(--accent);
     color: var(--foreground);
   }
 
