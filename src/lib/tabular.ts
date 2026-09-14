@@ -20,9 +20,16 @@ export async function readDataFile(file: File): Promise<DataSheet[]> {
     return [{ name: "Sheet1", rows: parsed.data }];
   }
 
-  if (!/\.xlsx$/i.test(file.name)) throw new Error("Choose a CSV or .xlsx file.");
+  const extension = file.name.match(/\.(xlsx|xls)$/i)?.[1].toLowerCase();
+  if (!extension) throw new Error("Choose a CSV, .xlsx, or .xls file.");
   const bytes = new Uint8Array(await file.arrayBuffer());
-  if (bytes[0] !== 0x50 || bytes[1] !== 0x4b) throw new Error("This is not an Excel workbook.");
+  // SheetJS also reads plain text, so reject renamed files before its format detection.
+  const signature = extension === "xlsx"
+    ? [0x50, 0x4b, 0x03, 0x04]
+    : [0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1];
+  if (!signature.every((byte, index) => bytes[index] === byte)) {
+    throw new Error("This is not an Excel workbook.");
+  }
 
   try {
     const workbook = XLSX.read(bytes, { type: "array", cellDates: true });
