@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "predev": "npm run db:migrate",
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "node node_modules/next/dist/bin/next dev",
+    "build": "node node_modules/next/dist/bin/next build",
     "prestart": "npm run db:migrate",
-    "start": "next start",
-    "lint": "eslint",
-    "test": "tsx --test tests/*.test.ts",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate"
+    "start": "node node_modules/next/dist/bin/next start",
+    "lint": "node node_modules/eslint/bin/eslint.js",
+    "test": "node node_modules/tsx/dist/cli.mjs --test tests/*.test.ts",
+    "test:startup": "node --test tests/startup.test.mjs",
+    "db:generate": "node node_modules/drizzle-kit/bin.cjs generate",
+    "db:migrate": "node node_modules/drizzle-kit/bin.cjs migrate"
   },
   "dependencies": {
     "better-sqlite3": "13.0.3",
@@ -38,6 +39,12 @@
     "typescript": "^5"
   },
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=22.9.0",
+    "npm": ">=11.19.0"
+  },
+  "allowScripts": {
+    "better-sqlite3": false,
+    "esbuild": true,
+    "unrs-resolver": true
   }
 }
