@@ -87,6 +87,7 @@ Start with these files:
 
 - [AppHeader](../src/components/app-header.tsx): shared brand header.
 - [UI components](../src/components/ui.tsx): `Button`, `Input`, and `Select`.
+- [DataTable](../src/components/data-table.tsx) and [FileUpload](../src/components/file-upload.tsx): optional components for requested data features; see [the data guide](tabular-data.md). These are not mounted in the starter.
 - [Starter page](../src/app/page.tsx): a title and working CSV import/export actions.
 - [Global styles](../src/app/globals.css): palette, semantic tokens, typography, and shared base styling.
 
