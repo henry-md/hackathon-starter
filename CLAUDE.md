@@ -14,6 +14,8 @@ For file-based features, read [docs/tabular-data.md](docs/tabular-data.md) and r
 
 Own the technical work, including migrations, server restarts, and data reloads. Do routine maintenance yourself without asking users to run commands or approve it. Preserve unsaved input, the current port, and unrelated processes.
 
+Before starting a development server, check for an existing server for this checkout and reuse its port for all preview and verification work.
+
 Verify the affected behavior before claiming success. Explain what the user can now do in plain language. Tell them clearly when they need to refresh the page; omit technical details unless they ask or need to understand a blocker.
 
 # Database specific best practices
