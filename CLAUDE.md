@@ -1,21 +1,19 @@
 # Project goal
 
-Build a hackathon starter for nondevelopers with around **3 hours of prompting** to create a working demo.
+This project will help citizen-developers (i.e. non-technical people) create an app demo that should work locally.
+Participants have around **3 hours for prompting** to build a working demo, so tools & plan should be chosen to create a working MVP within that time.
 
-Keep setup short and focus on the smallest useful demo. Prefer local storage, embedded databases, or sample data. Require no hosted database or cloud setup. Keep external services optional, with a local or mock fallback.
+# Guidelines
 
-Support only Cursor, Claude, and ChatGPT. Keep agent entry points limited to `AGENTS.md` and `CLAUDE.md`.
+Do not require hosted databases, cloud provisioning, or complex infrastructure in your design.
+Keep external services optional, with a local or mock fallback for the core demo.
 
-For page or UI work, read [docs/design.md](docs/design.md) and reuse its theme, fonts, and components.
-
-## Working with users
+For any page or UI work, read [docs/design.md](docs/design.md) and reuse the shared theme, fonts, and components it describes.
 
 Own the technical work, including migrations, server restarts, and data reloads. Do routine maintenance yourself without asking users to run commands or approve it. Preserve unsaved input, the current port, and unrelated processes.
 
 Verify the affected behavior before claiming success. Explain what the user can now do in plain language. Tell them clearly when they need to refresh the page; omit technical details unless they ask or need to understand a blocker.
 
-## Database migrations
-
 Use versioned Drizzle migrations. Check existing data and migration history, then generate, review, and apply new migrations before verifying the feature. Never edit applied migrations or bypass migration history. Resolve migration failures before continuing.
 
-Preserve existing records with safe defaults or backfills. Get explicit approval before discarding user data. Keep schema changes, migration SQL, and metadata together. Verify saving and loading, including existing records.
+Generate migration files with `npm run db:generate` and apply them with `npm run db:migrate` to keep the database and migration history in sync. Avoid creating migration files manually unless the generator cannot express the required change.
