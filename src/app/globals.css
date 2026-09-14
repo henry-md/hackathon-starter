@@ -1,26 +1,141 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+
+  /* Measured from cdr.com; source and application adaptations: docs/design.md. */
+  --cdr-navy: #102231;
+  --cdr-white: #ffffff;
+  --cdr-cream: #f1e9d5;
+  --cdr-sage: #cadac2;
+  --cdr-teal: #8eafae;
+  --cdr-dark-teal: #597b7c;
+  --cdr-green: #617d63;
+  --cdr-tan: #bf916b;
+  --cdr-brown: #65524d;
+  --cdr-gray-100: #f3f3f4;
+  --cdr-gray-200: #e6e7e8;
+  --cdr-gray-300: #d9dbdd;
+  --cdr-gray-600: #7d858c;
+  --cdr-gray-700: #636d75;
+  --cdr-gray-900: #333e47;
+  --cdr-focus: #006aff;
+
+  --background: var(--cdr-white);
+  --foreground: var(--cdr-navy);
+  --surface: var(--cdr-gray-100);
+  --surface-hover: var(--cdr-gray-200);
+  --primary: var(--cdr-navy);
+  --primary-hover: var(--cdr-gray-900);
+  --primary-foreground: var(--cdr-white);
+  --muted: var(--cdr-gray-700);
+  --border: var(--cdr-gray-300);
+  --input: var(--cdr-gray-600);
+  --ring: var(--cdr-focus);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-cream: var(--cdr-cream);
+  --color-sage: var(--cdr-sage);
+  --color-teal: var(--cdr-teal);
+  --font-sans: var(--font-basel), Arial, sans-serif;
+  --font-heading: var(--font-feature-deck), "Times New Roman", serif;
+  --font-display: var(--font-feature-display), "Times New Roman", serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 430;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  strong, b { font-weight: 535; }
+  button, input, select, textarea { font: inherit; }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--cdr-sage);
+    color: var(--foreground);
+  }
+
+  [id] { scroll-margin-top: 2rem; }
+}
+
+@layer components {
+  .page-container {
+    @apply mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12;
+  }
+  .site-header {
+    @apply border-b border-border bg-background;
+  }
+  .skip-link { @apply sr-only; }
+  .skip-link:focus {
+    @apply not-sr-only absolute top-4 left-4 z-50 rounded-full bg-primary px-6 py-3 text-primary-foreground;
+  }
+  .display-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0;
+  }
+  .section-heading {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  .button {
+    @apply inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full px-6 py-2 text-base;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+  .button-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary;
+  }
+  .button-secondary {
+    @apply bg-surface text-foreground hover:bg-surface-hover active:bg-border;
+  }
+  .button:disabled {
+    @apply cursor-not-allowed bg-surface text-muted;
+  }
+  .control {
+    @apply min-h-11 w-full rounded-lg border border-input bg-background px-3 py-2 text-base text-foreground placeholder:text-muted;
+  }
+  .control:hover:not(:disabled) { border-color: var(--foreground); }
+  .control:disabled { @apply cursor-not-allowed bg-surface text-muted; }
+  .text-link {
+    @apply underline decoration-input underline-offset-4 hover:decoration-foreground;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
