@@ -16,15 +16,3 @@ npm run dev
 ```
 
 Keep the terminal running. Once the server is ready, open the **Local** address printed in the terminal, usually [http://localhost:3000](http://localhost:3000).
-
-## Checks
-
-CI checks installation, tests, lint, build, and server startup. The startup checks cover the page and SQLite health endpoint. To run the checks locally:
-
-```sh
-npm ci
-npm test
-npm run lint
-npm run build
-npm run test:startup
-```
