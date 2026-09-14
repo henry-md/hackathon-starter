@@ -57,7 +57,7 @@ export default function Home() {
   return (
     <>
       <AppHeader />
-      <main id="main-content" tabIndex={-1} className="flex-1 bg-background">
+      <main id="main-content" tabIndex={-1} className="flex-1 bg-background focus:outline-none">
         <div className="page-container py-16 sm:py-24">
           <h1 className="display-heading max-w-4xl">Your hackathon workspace</h1>
           <ol aria-label="Excel workflow" className="mt-12 flex flex-wrap items-center gap-3">

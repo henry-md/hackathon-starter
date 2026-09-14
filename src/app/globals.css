@@ -25,16 +25,16 @@
   --foreground: var(--cdr-navy);
   --surface: var(--cdr-gray-100);
   --surface-hover: var(--cdr-gray-200);
-  /* Application accents for the Excel workflow. */
-  --primary: #0057c2;
-  --primary-hover: #00459b;
+  /* CD&R navy accents for the Excel workflow. */
+  --primary: var(--cdr-navy);
+  --primary-hover: var(--cdr-gray-900);
   --primary-foreground: var(--cdr-white);
-  --accent: #edf5ff;
+  --accent: color-mix(in srgb, var(--cdr-navy) 8%, var(--cdr-white));
   --accent-foreground: var(--primary);
   --muted: var(--cdr-gray-700);
   --border: var(--cdr-gray-300);
   --input: var(--cdr-gray-600);
-  --ring: var(--cdr-focus);
+  --ring: var(--primary);
 }
 
 @theme inline {

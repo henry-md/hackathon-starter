@@ -15,7 +15,7 @@ This is a practical guide derived from the public site, not an official CD&R bra
 
 ## Visual direction
 
-Use a white background, dark navy text, expressive serif headings, and clear sans-serif body copy. Give each page one prominent title and an obvious next action. Use blue highlights for actions and meaningful emphasis, with pale blue supporting areas.
+Use a white background, dark navy text, expressive serif headings, and clear sans-serif body copy. Give each page one prominent title and an obvious next action. Use CD&R navy highlights for actions and meaningful emphasis, with pale navy-tinted supporting areas.
 
 The reference site uses broad rectangular photography, alternating image/text sections, and news rows separated by fine rules. Carry over that calm hierarchy. Choose simple sections and ruled rows before adding more cards, shadows, or decorative effects.
 
@@ -25,7 +25,7 @@ These hex values are observed in the source stylesheet. Their starter roles are 
 
 | Color | Value | Starter use |
 | --- | --- | --- |
-| Navy | `#102231` | Main text and header logo |
+| Navy | `#102231` | Main text, header logo, and primary highlights |
 | White | `#FFFFFF` | Page background, inverse text |
 | Cream | `#F1E9D5` | Introductory or supporting areas |
 | Sage | `#CADAC2` | Gentle emphasis or supporting areas |
@@ -39,16 +39,17 @@ These hex values are observed in the source stylesheet. Their starter roles are 
 | Divider | `#D9DBDD` | Section and table separators |
 | Muted text | `#636D75` | Secondary application copy |
 | Input border | `#7D858C` | Visible form boundaries |
-| Focus blue | `#006AFF` | Keyboard focus indicator |
+| Focus blue | `#006AFF` | Reference site's keyboard focus color |
 
-The starter adds these **application adaptations** for its white-and-blue theme; these values are not observed CD&R brand colors:
+The starter uses CD&R navy (`#102231`), matching the site's footer, for its primary highlights. Hover, tinted surfaces, and keyboard focus are **application adaptations**:
 
 | Token | Value | Starter use |
 | --- | --- | --- |
-| `--primary` | `#0057C2` | Primary actions and blue emphasis |
-| `--primary-hover` | `#00459B` | Primary action hover |
-| `--accent` | `#EDF5FF` | Pale blue supporting areas |
-| `--accent-foreground` | `var(--primary)` | Text on pale blue accents |
+| `--primary` | `var(--cdr-navy)` | Primary actions and navy emphasis |
+| `--primary-hover` | `var(--cdr-gray-900)` | Primary action hover |
+| `--accent` | 8% CD&R navy mixed with white | Pale supporting areas and text selection |
+| `--accent-foreground` | `var(--primary)` | Text on pale accents |
+| `--ring` | `var(--primary)` | Keyboard focus indicator |
 
 Use semantic Tailwind classes from [globals.css](../src/app/globals.css), rather than repeating hex values:
 
@@ -58,7 +59,7 @@ Use semantic Tailwind classes from [globals.css](../src/app/globals.css), rather
 | Secondary copy | `text-muted` |
 | Quiet surface | `bg-surface` |
 | Primary action | `bg-primary text-primary-foreground` |
-| Blue emphasis | `text-primary` |
+| Navy emphasis | `text-primary` |
 | Accent areas | `bg-accent text-accent-foreground` |
 | Dividers and inputs | `border-border`, `border-input` |
 | Keyboard focus | `outline-ring` |
@@ -87,9 +88,9 @@ The observed public font URLs use the same filenames under `https://www.cdr.com/
 
 **Observed:** the site has a 12-column grid with 12px mobile gutters and 16px gutters from 600px. Content alternates between large images and text, with generous vertical spacing. Homepage buttons are neutral gray pills with navy text, 40px high, 16px horizontal padding, and an 8px icon gap. Neutral hover changes to `#E6E7E8`. Focus uses a blue outline with a 2px offset.
 
-**Application adaptations:** use a minimum 72px header that can wrap on mobile, a 1280px container maximum, and 24/32/48px side padding at Tailwind's base/sm/lg breakpoints. Place three adjacent numbered circles in a compact row at the upper left of the workflow, with the selected number highlighted in blue. Show no text beside the numbers; give every control the full step name through an accessible label. Display only the selected step's content, identified by its section heading. Make controls at least 44px high with 24px button padding, use a blue filled primary action, and retain the neutral pill style for secondary actions. Use 150ms button color transitions and a 3px keyboard focus offset; remove motion when reduced motion is requested. Use stronger input borders than decorative dividers. Keep the starter light regardless of the system color scheme.
+**Application adaptations:** use a minimum 72px header that can wrap on mobile, a 1280px container maximum, and 24/32/48px side padding at Tailwind's base/sm/lg breakpoints. Place three adjacent numbered circles in a compact row at the upper left of the workflow, with the selected number highlighted in navy. Show no text beside the numbers; give every control the full step name through an accessible label. Display only the selected step's content, identified by its section heading. Make controls at least 44px high with 24px button padding, use a navy filled primary action, and retain the neutral pill style for secondary actions. Use 150ms button color transitions and a 3px keyboard focus offset; remove motion when reduced motion is requested. Use stronger input borders than decorative dividers. Keep the starter light regardless of the system color scheme.
 
-Prefer short labels, visible field labels, native form behavior, and clear empty states. Preserve keyboard focus styles. State changes and errors must include text. Allow titles and forms to wrap without horizontal page scrolling.
+Prefer short labels, visible field labels, native form behavior, and clear empty states. Preserve keyboard focus styles on interactive controls. Keep the main content focusable for the skip link, without outlining the whole page. State changes and errors must include text. Allow titles and forms to wrap without horizontal page scrolling.
 
 ## Reuse before creating
 
